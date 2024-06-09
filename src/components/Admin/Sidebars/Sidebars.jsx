@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "/Logo.png";
 import { FiLogOut } from "react-icons/fi";
-import { NavData } from "../../../../../fe/componentsss/SharedComponents/Content";
+import { NavData } from "../../SharedComponents/Content";
 
 function Sidebars({ openSidebarToggle }) {
   const location = useLocation();
@@ -17,7 +17,7 @@ function Sidebars({ openSidebarToggle }) {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setToken(null);
-    navigate("/"); 
+    navigate("/");
   };
 
   return (
@@ -60,7 +60,7 @@ function Sidebars({ openSidebarToggle }) {
             </Link>
           </li>
         ))}
-        
+
         <div className="font-[Poppins] lg:pt-20 pt-6 md:pt-20 pb-4">
           <button
             onClick={handleLogout}
