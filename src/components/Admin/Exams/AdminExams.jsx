@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Footer from "../../../../../fe/componentsss/Footer/Footer";
+import Footer from "../../Footer/Footer";
 import Addbutton from "../../../../../fe/componentsss/Buttons/Addbutton";
 import { Title, SubTitle, Labels } from "../../../../../fe/componentsss/SharedComponents/Inputs";
 import { AiOutlineClose } from "react-icons/ai";
