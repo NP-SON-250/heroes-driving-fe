@@ -11,7 +11,7 @@ const UserFreeExams = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        "http://localhost:9000/api/v1/exams/all/free",
+        "https://heroes-driving-be.onrender.com/api/v1/exams/all/free",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ const UserFreeExams = () => {
         navigate("/login");
       } else {
         const response = await axios.get(
-          `http://localhost:9000/api/v1/exams/single/${id}`,
+          `https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`,
           {
             headers: {
               authorization: `Bearer ${token}`,

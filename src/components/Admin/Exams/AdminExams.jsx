@@ -79,7 +79,7 @@ const AdminExams = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:9000/api/v1/exams/record`,
+        `https://heroes-driving-be.onrender.com/api/v1/exams/record`,
         formData,
         {
           headers: {
@@ -117,7 +117,7 @@ const AdminExams = () => {
 
   const getExamData = async () => {
     const token = localStorage.getItem("token");
-    const response = await axios.get("http://localhost:9000/api/v1/exams/all", {
+    const response = await axios.get("https://heroes-driving-be.onrender.com/api/v1/exams/all", {
       headers: {
         authorization: `Bearer ${token}`,
       },
@@ -134,7 +134,7 @@ const AdminExams = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `http://localhost:9000/api/v1/exams/delete/${id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/exams/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -160,7 +160,7 @@ const AdminExams = () => {
 
   function getSingleExam(id) {
     axios
-      .get(`http://localhost:9000/api/v1/exams/single/${id}`)
+      .get(`https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`)
       .then((res) => setExamDataEdit(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -174,7 +174,7 @@ const AdminExams = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `http://localhost:9000/api/v1/exams/update/${examDataEdit._id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/exams/update/${examDataEdit._id}`,
         formData,
         {
           headers: {
@@ -228,7 +228,7 @@ const AdminExams = () => {
 
   function getSingleExamTo(id) {
     axios
-      .get(`http://localhost:9000/api/v1/exams/single/${id}`)
+      .get(`https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`)
       .then((res) => setExamId(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -244,7 +244,7 @@ const AdminExams = () => {
     } else {
       try {
         const response = await axios.post(
-          `http://localhost:9000/api/v1/questions/record/${examId._id}`,
+          `https://heroes-driving-be.onrender.com/api/v1/questions/record/${examId._id}`,
           formData,
           {
             headers: {
