@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../../Footer/Footer";
 import Addbutton from "../../Buttons/Addbutton";
-import { Title, SubTitle, Labels } from "../../../../../fe/componentsss/SharedComponents/Inputs";
+import { Title, SubTitle, Labels } from "../../SharedComponents/Inputs";
 import { AiOutlineClose } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
