@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../../Footer/Footer";
-import Addbutton from "../../../../../fe/componentsss/Buttons/Addbutton";
+import Addbutton from "../../Buttons/Addbutton";
 import { Title, SubTitle, Labels } from "../../../../../fe/componentsss/SharedComponents/Inputs";
 import { AiOutlineClose } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
