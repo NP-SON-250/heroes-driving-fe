@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../../../../fe/componentsss/Footer/Footer";
+import Footer from "../Footer/Footer";
 const Dashboards = () => {
   return (
     <div className=" font-[Poppins] ">
