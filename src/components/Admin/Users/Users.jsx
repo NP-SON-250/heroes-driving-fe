@@ -208,7 +208,7 @@ const Users = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const response = await axios.get("http://localhost:9000/api/v1/users/all");
+    const response = await axios.get("https://heroes-driving-be.onrender.com/api/v1/users/all");
     const data = response.data.data;
     setData(data);
   };
@@ -220,7 +220,7 @@ const Users = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `http://localhost:9000/api/v1/users/delete/${id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/users/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -241,7 +241,7 @@ const Users = () => {
   function getSingleUser(id) {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://localhost:9000/api/v1/users/single/${id}`, {
+      .get(`https://heroes-driving-be.onrender.com/api/v1/users/single/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -260,7 +260,7 @@ const Users = () => {
     const token = localStorage.getItem("token");
     axios
       .put(
-        `http://localhost:9000/api/v1/users/update/${dataEdit._id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/users/update/${dataEdit._id}`,
         formData
       )
       .then((res) => {
