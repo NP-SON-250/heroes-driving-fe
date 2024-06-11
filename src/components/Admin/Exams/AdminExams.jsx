@@ -303,7 +303,7 @@ const AdminExams = () => {
 
   return (
     <>
-    {isLoading && <Loader />}
+    
       <div className=" font-[Poppins] ">
         <div className=" font-[Poppins] fixed z-20">
           <Addbutton onClick={togglePopup} />
@@ -374,6 +374,7 @@ const AdminExams = () => {
 
         {/* ===== Display exams===== */}
         <div className=" font-[Poppins] pt-10">
+        {isLoading && <Loader />}
           <section id="services">
             <div className=" font-[Poppins] md:container px-0 py-8">
               <div className=" font-[Poppins] flex gap-5 justify-between flex-wrap group">
