@@ -9,6 +9,12 @@ const UserPaidExams = () => {
 
   const getExamData = async () => {
     const token = localStorage.getItem("token");
+    // Check if token exists
+    if (!token) {
+      // Handle the case where the user is not logged in
+      setExamData([]);
+      return;
+    }
     try {
       const response = await axios.get(
         "https://heroes-driving-be.onrender.com/api/v1/exams/all/paid",
@@ -18,12 +24,7 @@ const UserPaidExams = () => {
           },
         }
       );
-      if (
-        response.status === 201 &&
-        response.data.message.includes(
-          ""
-        )
-      ) {
+      if (response.status === 201 && response.data.message.includes("")) {
         setHasResponded(true);
       } else if (response.status === 200) {
         const data = response.data.data;
@@ -105,11 +106,10 @@ const UserPaidExams = () => {
                 ))
               ) : hasResponded ? (
                 <div>
-                     
                   <p className=" text-center text-xl">
-                  Kode yawe ibizamini ntarengwa yemerewe byageze, <br />
+                    Kode yawe ibizamini ntarengwa yemerewe byageze, <br />
                     <Link to={"/getcode"} className="text-[#006991] pr-2">
-                    gura indi
+                      gura indi
                     </Link>
                     urahabwa inyongera y'ibizamini bibiri. <br />
                     Niba ushaka kumenya amanota wagize <br /> mubizamini wakoze,
@@ -119,7 +119,9 @@ const UserPaidExams = () => {
                   </p>
                 </div>
               ) : (
-                <p className=" text-center">Injira kuri sisitemu ubone amakuru y'ibizamini</p>
+                <p className=" text-center">
+                  Injira kuri sisitemu ubone amakuru y'ibizamini
+                </p>
               )}
             </div>
           </div>

@@ -9,6 +9,13 @@ const UserFreeExams = () => {
 
   const getExamData = async () => {
     const token = localStorage.getItem("token");
+    // Check if token exists
+    if (!token) {
+      // Handle the case where the user is not logged in
+      setExamData([]);
+      return;
+    }
+
     try {
       const response = await axios.get(
         "https://heroes-driving-be.onrender.com/api/v1/exams/all/free",
@@ -118,7 +125,9 @@ const UserFreeExams = () => {
                   </p>
                 </div>
               ) : (
-                <p className=" text-center">Injira kuri sisitemu kugirango utangire gukora imyitozo</p>
+                <p className=" text-center">
+                  Injira kuri sisitemu kugirango utangire gukora imyitozo
+                </p>
               )}
             </div>
           </div>

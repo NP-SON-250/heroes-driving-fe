@@ -23,7 +23,7 @@ const NavBar = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.clear();
     setToken(null);
   };
 
