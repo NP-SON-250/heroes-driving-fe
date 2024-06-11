@@ -5,8 +5,9 @@ import React, { useRef, useState, useEffect } from "react";
 import Highlighter from "react-highlight-words";
 import { Button, Input, Space, Table, message } from "antd";
 import { MdDelete } from "react-icons/md";
-import { RiEditBoxLine } from "react-icons/ri";
-import { Modal, Popconfirm, Select } from "antd";
+import { FcEditImage } from "react-icons/fc";
+
+import { Modal, Popconfirm } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import Footer from "../../Footer/Footer";
 const Users = () => {
@@ -318,7 +319,7 @@ const Users = () => {
                       showModal();
                     }}
                   >
-                    <RiEditBoxLine size={24} className="edit-buttom" />
+                    <FcEditImage size={24} className="edit-buttom" />
                   </div>
                   <Popconfirm
                     title="Delete User"

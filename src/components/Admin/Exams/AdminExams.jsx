@@ -12,8 +12,10 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdOutlineEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Modal, Popconfirm } from "antd";
+import Loader from "../../SharedComponents/Loader";
 
 const AdminExams = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [exams, setExams] = useState({
     title: "",
@@ -114,20 +116,30 @@ const AdminExams = () => {
 
   // ============= fetching exams =================
   const [examData, setExamData] = useState([]);
-
-  const getExamData = async () => {
-    const token = localStorage.getItem("token");
-    const response = await axios.get("https://heroes-driving-be.onrender.com/api/v1/exams/all", {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const data = response.data.data;
-    setExamData(data);
-  };
   useEffect(() => {
     getExamData();
   }, []);
+
+  const getExamData = async () => {
+    setIsLoading(true); // Set loading to true when fetching data
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios.get(
+        "https://heroes-driving-be.onrender.com/api/v1/exams/all",
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = response.data.data;
+      setExamData(data);
+      setIsLoading(false); // Set loading to false after data is fetched
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false); // Set loading to false in case of error
+    }
+  };
 
   // ================== delete exam =====================
   async function handleDeleteExam(id) {
@@ -291,6 +303,7 @@ const AdminExams = () => {
 
   return (
     <>
+    {isLoading && <Loader />}
       <div className=" font-[Poppins] ">
         <div className=" font-[Poppins] fixed z-20">
           <Addbutton onClick={togglePopup} />
