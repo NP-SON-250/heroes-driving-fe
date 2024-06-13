@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import Button from "../Buttons/Button";
 import UserFreeExams from "./UserFreeExams";
+import Hello from "../Hello/Hello";
 const Home = () => {
   const { services } = Contents;
   const { News } = Contents;

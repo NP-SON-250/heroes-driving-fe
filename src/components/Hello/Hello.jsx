@@ -5,9 +5,9 @@ import Button from "../Buttons/Button";
 const Hello = () => {
   return (
     <>
-      <div className=" font-[Poppins] ">
+      <div className='bg-[url("assets/Cargiff.gif")] bg-center bg-cover'>
         <Heading />
-        <div className=" font-[Poppins] flex col-1 justify-center">
+        <div className=" font-[Poppins] flex col-1 justify-center pb-6">
           <Link to={"/getcode"}>
             <Button>Gura kode</Button>
           </Link>

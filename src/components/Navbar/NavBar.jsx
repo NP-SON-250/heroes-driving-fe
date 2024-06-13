@@ -32,7 +32,7 @@ const NavBar = () => {
       <div className="font-[Poppins] lg:flex items-center justify-around bg-white py-0">
         <Link to="/">
           <div
-            className="font-[Poppins] cursor-pointer flex items-center lg:ml-0 md:ml-[12rem] ml-[2rem]"
+            className="font-[Poppins] cursor-pointer flex items-center lg:ml-0 md:ml-[12rem]"
             title="Heroes Logo"
           >
             <img
@@ -47,7 +47,7 @@ const NavBar = () => {
         </Link>
         <div
           onClick={() => setOpen(!open)}
-          className="font-[Poppins] text-3xl absolute right-8 md:top-12 top-8 cursor-pointer lg:hidden"
+          className="font-[Poppins] text-3xl absolute right-4 md:top-12 top-8 cursor-pointer lg:hidden"
         >
           {open ? (
             <AiOutlineClose title="close" />

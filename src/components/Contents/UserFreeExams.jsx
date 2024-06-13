@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
+import Hello from "../Hello/Hello";
 const UserFreeExams = () => {
   const [examData, setExamData] = useState([]);
   const [hasResponded, setHasResponded] = useState(false);
@@ -68,6 +68,7 @@ const UserFreeExams = () => {
 
   return (
     <div className="font-[Poppins]">
+      <Hello/>
       <div className="font-[Poppins] pt-10">
         <section id="services">
           <div className="font-[Poppins] md:container px-0 py-8 flex justify-center">

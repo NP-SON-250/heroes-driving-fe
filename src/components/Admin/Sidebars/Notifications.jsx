@@ -4,10 +4,10 @@ import { useLocation } from "react-router-dom";
 const Notifications = () => {
   const location = useLocation();
   return (
-    <div className=" font-[Poppins] flex flex-col border border-gray rounded-md p-4 items-start lg:w-[450px] w-[370px] bg-white shadow-lg">
+    <div className=" font-[Poppins] flex flex-col border border-gray rounded-md p-4 items-center lg:w-[450px] md:w-[370px] w-screen absolute -right-2 bg-white shadow-lg overflow-y-visible">
       <div className=" font-[Poppins] grid grid-cols-2 gap-5 p-4">
         <h3 className=" font-[Poppins] text-gray text-2xl">Notifications</h3>
-        <p className=" font-[Poppins] text-xl font-bold mt-1">New</p>
+        <p className=" font-[Poppins] text-xl font-bold mt-1 ml-16">New</p>
       </div>
       <ul className=" font-[Poppins] space-y-4 px-4">
         {NotificationData.map((maper) => (

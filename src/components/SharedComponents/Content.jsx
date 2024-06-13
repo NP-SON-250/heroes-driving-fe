@@ -160,13 +160,6 @@ export const NotificationData = [
     time: "06:00 am",
     message: "I want to pay so that I can get code for exam......",
   },
-  {
-    id: 3,
-    profile: News4,
-    name: "Shalon",
-    time: "19:00 am",
-    message: "Nakora iki ko abunoma yanjye yashize?",
-  },
 ];
 
 
