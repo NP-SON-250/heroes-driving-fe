@@ -1,7 +1,7 @@
 import React from "react";
 const Heading = () => {
   return (
-    <div className=" font-[Poppins] lg:pl-[20rem] md:pl-24 pl-3 lg:pt-10 md:pt-40  pt-5 flex justify-center">
+    <div className=" font-[Poppins] lg:pl-[20rem] md:pl-24 pl-3 lg:pt-10 md:pt-32  pt-16 flex justify-center">
       <div>
         <h1 className=" font-[Poppins] lg:text-xl md:text-2xl text-xl font-extrabold text-white  uppercase underline ">
           Ongera Ubumenyi Bwawe:

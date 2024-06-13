@@ -49,7 +49,7 @@ const App = () => {
             }
           />
           <Route
-            path="/exams"
+            path="admin/exams"
             element={
               <PrivateRoute>
                 <AdminExams />
@@ -57,7 +57,7 @@ const App = () => {
             }
           />
           <Route
-            path="/users"
+            path="admin/users"
             element={
               <PrivateRoute>
                 <Users />
@@ -65,7 +65,7 @@ const App = () => {
             }
           />
           <Route
-            path="/payments"
+            path="admin/payments"
             element={
               <PrivateRoute>
                 <Payments />
@@ -73,7 +73,7 @@ const App = () => {
             }
           />
           <Route
-            path="/reports"
+            path="admin/reports"
             element={
               <PrivateRoute>
                 <Reports />
@@ -81,7 +81,7 @@ const App = () => {
             }
           />
           <Route
-            path="/settings"
+            path="admin/blogs"
             element={
               <PrivateRoute>
                 <Settings />

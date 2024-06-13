@@ -6,10 +6,10 @@ import Footer from "../Footer/Footer";
 const UserLay = () => {
   return (
     <>
-      <div className=" pt-24">
+      <div className=" pt-10">
         <NavBar />
-      <Outlet />
-      <Footer />
+        <Outlet />
+        <Footer />
       </div>
     </>
   );

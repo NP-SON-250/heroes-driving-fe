@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "/Logo.png";
 import Button from "../Buttons/Button";
 import { FaAlignJustify } from "react-icons/fa6";
+import { BsPersonCircle } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
+import Profiles from "../Admin/Sidebars/Profiles";
 
 const Links = [
   { name: "ahabanza", link: "/", title: "Home" },
@@ -14,7 +16,9 @@ const Links = [
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [profileVisible, setProfileVisible] = useState(false);
   const [token, setToken] = useState(null);
+  const profileRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -22,8 +26,29 @@ const NavBar = () => {
     setToken(storedToken);
   }, []);
 
+  const toggleProfileVisibility = (event) => {
+    event.stopPropagation();
+    setProfileVisible((prev) => !prev);
+  };
+
+  const handleClickOutside = (event) => {
+    if (profileRef.current && !profileRef.current.contains(event.target)) {
+      setProfileVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  const handleLinkClick = () => {
+    setOpen(false);
+  };
+
   const handleLogout = () => {
-    localStorage.clear();
     setToken(null);
   };
 
@@ -56,7 +81,7 @@ const NavBar = () => {
           )}
         </div>
         <ul
-          className={`lg:flex lg:items-center lg:pb-0 pb-12 absolute lg:static bg-white lg:z-auto z-[-1] right-0 lg:w-auto w-full text-center gap-10 ${
+          className={`lg:flex lg:items-center lg:pb-0 pb-12 absolute lg:static lg:border-0 lg:rounded-none lg:shadow-none border border-gray rounded-md shadow-lg bg-white lg:z-auto z-[-1] right-0 lg:w-auto w-full text-center gap-10 ${
             open ? "top-20" : "top-[-490px]"
           }`}
         >
@@ -72,21 +97,30 @@ const NavBar = () => {
               <Link
                 to={maper.link}
                 className="font-[Poppins] hover:text-[#006991] duration-500"
+                onClick={handleLinkClick}
               >
                 {maper.name}
               </Link>
             </li>
           ))}
           {token ? (
-            <button
-              onClick={handleLogout}
-              className="font-[Poppins] btn self-start  bg-white text-dark_primary hover:bg-dark_primary hover:text-white lg:text-lg md:text-4xl text-2xl font-bold"
-            >
-              Sohoka
-            </button>
+            <div className="font-[Poppins] relative flex justify-center items-center">
+              <BsPersonCircle
+                className="font-[Poppins] text-4xl lg:text-4xl md:text-5xl cursor-pointer"
+                onClick={toggleProfileVisibility}
+              />
+              {profileVisible && (
+                <div
+                  ref={profileRef}
+                  className="font-[Poppins] absolute md:top-[3.4rem] top-[2.6rem] md:right-[12rem] right-8"
+                >
+                  <Profiles onLogout={handleLogout} />
+                </div>
+              )}
+            </div>
           ) : (
             <Link to={"/login"}>
-              <Button>Injira</Button>
+              <Button onClick={handleLinkClick}>Injira</Button>
             </Link>
           )}
         </ul>
