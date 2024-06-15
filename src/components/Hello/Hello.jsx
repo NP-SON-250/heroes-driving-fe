@@ -5,7 +5,7 @@ import Button from "../Buttons/Button";
 const Hello = () => {
   return (
     <>
-      <div className='bg-[url("assets/Cargiff.gif")] bg-center bg-cover'>
+      <div className='bg-[url("assets/News4.jpg")] bg-center bg-cover'>
         <Heading />
         <div className=" font-[Poppins] flex col-1 justify-center pb-6">
           <Link to={"/getcode"}>

@@ -112,7 +112,7 @@ const NavBar = () => {
               {profileVisible && (
                 <div
                   ref={profileRef}
-                  className="font-[Poppins] absolute md:top-[3.4rem] top-[2.6rem] md:right-[12rem] right-8"
+                  className="font-[Poppins] absolute md:top-[3.4rem] -top-[15rem] md:right-[12rem] right-8"
                 >
                   <Profiles onLogout={handleLogout} />
                 </div>

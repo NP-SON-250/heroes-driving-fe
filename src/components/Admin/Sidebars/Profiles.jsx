@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 
 const Profiles = ({ onLogout }) => {
-  const fullname = localStorage.getItem("fullname") || "Full Name";
-  const username = localStorage.getItem("username") || "username@example.com";
+  const fullname = localStorage.getItem("fullname") || "Your account";
+  const username = localStorage.getItem("username") || "youraccount@example.com";
 
   const navigate = useNavigate();
   const [token, setToken] = useState(null);
