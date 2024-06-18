@@ -116,8 +116,8 @@ export const NavData = [
   {
     id: 2,
     icon: <BsFolder2Open />,
-    text: "Exams",
-    link: "admin/exams",
+    text: "Categories",
+    link: "admin/categories",
   },
   {
     id: 3,

@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { Modal, Popconfirm } from "antd";
 import Loader from "../../SharedComponents/Loader";
 
-const AdminExams = () => {
+const AdminCategories = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [exams, setExams] = useState({
@@ -81,7 +81,7 @@ const AdminExams = () => {
 
     try {
       const response = await axios.post(
-        `https://heroes-driving-be.onrender.com/api/v1/exams/record`,
+        `http://localhost:9000/api/v1/exams/record`,
         formData,
         {
           headers: {
@@ -125,7 +125,7 @@ const AdminExams = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        "https://heroes-driving-be.onrender.com/api/v1/exams/all",
+        "http://localhost:9000/api/v1/exams/all",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -146,7 +146,7 @@ const AdminExams = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://heroes-driving-be.onrender.com/api/v1/exams/delete/${id}`,
+        `http://localhost:9000/api/v1/exams/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -172,7 +172,7 @@ const AdminExams = () => {
 
   function getSingleExam(id) {
     axios
-      .get(`https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`)
+      .get(`http://localhost:9000/api/v1/exams/single/${id}`)
       .then((res) => setExamDataEdit(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -186,7 +186,7 @@ const AdminExams = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `https://heroes-driving-be.onrender.com/api/v1/exams/update/${examDataEdit._id}`,
+        `http://localhost:9000/api/v1/exams/update/${examDataEdit._id}`,
         formData,
         {
           headers: {
@@ -240,7 +240,7 @@ const AdminExams = () => {
 
   function getSingleExamTo(id) {
     axios
-      .get(`https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`)
+      .get(`http://localhost:9000/api/v1/exams/single/${id}`)
       .then((res) => setExamId(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -256,7 +256,7 @@ const AdminExams = () => {
     } else {
       try {
         const response = await axios.post(
-          `https://heroes-driving-be.onrender.com/api/v1/questions/record/${examId._id}`,
+          `http://localhost:9000/api/v1/questions/record/${examId._id}`,
           formData,
           {
             headers: {
@@ -303,7 +303,6 @@ const AdminExams = () => {
 
   return (
     <>
-    
       <div className=" font-[Poppins] ">
         <div className=" font-[Poppins] fixed z-20">
           <Addbutton onClick={togglePopup} />
@@ -374,7 +373,7 @@ const AdminExams = () => {
 
         {/* ===== Display exams===== */}
         <div className=" font-[Poppins] pt-10">
-        {isLoading && <Loader />}
+          {isLoading && <Loader />}
           <section id="services">
             <div className=" font-[Poppins] md:container px-0 py-8">
               <div className=" font-[Poppins] flex gap-5 justify-between flex-wrap group">
@@ -608,4 +607,4 @@ const AdminExams = () => {
   );
 };
 
-export default AdminExams;
+export default AdminCategories;

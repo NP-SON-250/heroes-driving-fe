@@ -44,7 +44,7 @@ const ConductExam = () => {
   };
 
   useEffect(() => {
-    fetch(`https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`)
+    fetch(`http://localhost:9000/api/v1/exams/single/${id}`)
       .then((response) => response.json())
       .then((data) => setExamData(data.data))
       .catch((error) => console.error("Error fetching exam data:", error));
@@ -52,7 +52,8 @@ const ConductExam = () => {
 
   useEffect(() => {
     if (examData) {
-      const savedOptions = JSON.parse(localStorage.getItem("selectedOptions")) || {};
+      const savedOptions =
+        JSON.parse(localStorage.getItem("selectedOptions")) || {};
       const currentQuestionId = examData.questions[currentQuestionIndex]._id;
       setSelectedOption(savedOptions[currentQuestionId] || null);
     }
@@ -79,7 +80,8 @@ const ConductExam = () => {
     const currentQuestionId = examData.questions[currentQuestionIndex]._id;
     setSelectedOption(event.target.value);
 
-    const savedOptions = JSON.parse(localStorage.getItem("selectedOptions")) || {};
+    const savedOptions =
+      JSON.parse(localStorage.getItem("selectedOptions")) || {};
     savedOptions[currentQuestionId] = event.target.value;
     localStorage.setItem("selectedOptions", JSON.stringify(savedOptions));
   };
@@ -106,7 +108,8 @@ const ConductExam = () => {
       return;
     }
 
-    const savedOptions = JSON.parse(localStorage.getItem("selectedOptions")) || {};
+    const savedOptions =
+      JSON.parse(localStorage.getItem("selectedOptions")) || {};
     const responses = Object.keys(savedOptions).map((questionId) => ({
       questionId,
       selectedOptionId: savedOptions[questionId],
@@ -117,7 +120,7 @@ const ConductExam = () => {
       responses,
     };
 
-    fetch(`https://heroes-driving-be.onrender.com/api/v1/newresponses/add/${examData._id}`, {
+    fetch(`http://localhost:9000/api/v1/newresponses/add/${examData._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

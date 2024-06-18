@@ -18,7 +18,7 @@ const UserFreeExams = () => {
 
     try {
       const response = await axios.get(
-        "https://heroes-driving-be.onrender.com/api/v1/exams/all/free",
+        "http://localhost:9000/api/v1/exams/all/free",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -52,7 +52,7 @@ const UserFreeExams = () => {
         navigate("/login");
       } else {
         const response = await axios.get(
-          `https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`,
+          `http://localhost:9000/api/v1/exams/single/${id}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -68,7 +68,7 @@ const UserFreeExams = () => {
 
   return (
     <div className="font-[Poppins]">
-      <Hello/>
+      <Hello />
       <div className="font-[Poppins] pt-10">
         <section id="services">
           <div className="font-[Poppins] md:container px-0 py-8 flex justify-center">

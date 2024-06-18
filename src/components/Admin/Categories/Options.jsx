@@ -44,7 +44,7 @@ const Options = () => {
   const getQuestionOption = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `https://heroes-driving-be.onrender.com/api/v1/options/all/${id}`,
+      `http://localhost:9000/api/v1/options/all/${id}`,
       {
         headers: {
           authorization: `Bearer ${token}`,
@@ -75,7 +75,7 @@ const Options = () => {
 
   function getSingleOption(id) {
     axios
-      .get(`https://heroes-driving-be.onrender.com/api/v1/options/single/${id}`)
+      .get(`http://localhost:9000/api/v1/options/single/${id}`)
       .then((res) => setOptionDataEdit(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -88,7 +88,7 @@ const Options = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `https://heroes-driving-be.onrender.com/api/v1/options/update/${optionDataEdit._id}`,
+        `http://localhost:9000/api/v1/options/update/${optionDataEdit._id}`,
         formData,
         {
           headers: {
@@ -129,7 +129,7 @@ const Options = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://heroes-driving-be.onrender.com/api/v1/options/delete/${id}`,
+        `http://localhost:9000/api/v1/options/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,

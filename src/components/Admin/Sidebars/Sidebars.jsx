@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { RxDashboard } from "react-icons/rx";
+import { BsFolder2Open, BsPeopleFill, BsGear } from "react-icons/bs";
+import { AiOutlinePayCircle } from "react-icons/ai";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import Logo from "/Logo.png";
 import { NavData } from "../../SharedComponents/Content";
 
@@ -24,11 +28,11 @@ function Sidebars({ openSidebarToggle }) {
       }
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -36,7 +40,9 @@ function Sidebars({ openSidebarToggle }) {
     <aside
       className={`${
         open ? "fixed" : "md:fixed hidden"
-      } lg:block md:pt-10 pb-4 lg:pt-0 md:fixed sm:relative bg-white rounded-md shadow-2xl transition-all duration-500 lg:mt-0 mt-14 lg:w-[300px] w-full lg:h-screen z-50 ${!open && "hidden md:hidden"}`}
+      } lg:block md:pt-10 pb-4 lg:pt-0 md:fixed sm:relative bg-white rounded-md shadow-2xl transition-all duration-500 lg:mt-0 mt-14 lg:w-[300px] w-full lg:h-screen z-50 ${
+        !open && "hidden md:hidden"
+      }`}
     >
       <div className="font-[Poppins] flex lg:justify-between justify-center items-center">
         <Link to={"/dashboard"} onClick={handleLinkClick}>
@@ -57,10 +63,10 @@ function Sidebars({ openSidebarToggle }) {
           <li
             key={maper.id}
             className={`hover:bg-gray p-2 lg:pl-2 rounded lg:w-full md:w-1/2 ${
-              location.pathname === maper.link ? "bg-gray " : ""
+              location.pathname === (maper.link.startsWith("/") ? maper.link : `/${maper.link}`) ? "bg-gray text-white" : ""
             }`}
           >
-            <Link to={maper.link} onClick={handleLinkClick}>
+            <Link to={maper.link.startsWith("/") ? maper.link : `/${maper.link}`} onClick={handleLinkClick}>
               <div className="font-[Poppins] flex items-center space-x-5">
                 <div className="font-[Poppins] text-3xl md:text-5xl lg:text-3xl">
                   {maper.icon}

@@ -57,7 +57,7 @@ const NavBar = () => {
       <div className="font-[Poppins] lg:flex items-center justify-around bg-white py-0">
         <Link to="/">
           <div
-            className="font-[Poppins] cursor-pointer flex items-center lg:ml-0 md:ml-[12rem]"
+            className="font-[Poppins] cursor-pointer flex items-center"
             title="Heroes Logo"
           >
             <img
@@ -65,7 +65,7 @@ const NavBar = () => {
               alt="Heroes Logo"
               className="font-[Poppins] lg:h-[70px] h-[90px] md:h-[120px]"
             />
-            <p className="font-[Poppins] ml-[-15px] font-bold lg:text-xl md:text-4xl text-2xl">
+            <p className="font-[Poppins] ml-[-15px] font-bold lg:text-xl md:text-4xl text-2xl lg:block hidden">
               Heroes driving
             </p>
           </div>
@@ -103,27 +103,29 @@ const NavBar = () => {
               </Link>
             </li>
           ))}
-          {token ? (
-            <div className="font-[Poppins] relative flex justify-center items-center">
-              <BsPersonCircle
-                className="font-[Poppins] text-4xl lg:text-4xl md:text-5xl cursor-pointer"
-                onClick={toggleProfileVisibility}
-              />
-              {profileVisible && (
-                <div
-                  ref={profileRef}
-                  className="font-[Poppins] absolute md:top-[3.4rem] -top-[15rem] md:right-[12rem] right-8"
-                >
-                  <Profiles onLogout={handleLogout} />
-                </div>
-              )}
-            </div>
-          ) : (
+        </ul>
+        {token ? (
+          <div className="font-[Poppins] relative flex justify-center items-center">
+            <BsPersonCircle
+              className="font-[Poppins] text-4xl lg:text-4xl md:text-5xl cursor-pointer lg:relative lg:top-0 absolute  bottom-6"
+              onClick={toggleProfileVisibility}
+            />
+            {profileVisible && (
+              <div
+                ref={profileRef}
+                className="font-[Poppins] absolute lg:top-[3.3rem] lg:right-0 md:top-0 md:right-[12rem] right-8"
+              >
+                <Profiles onLogout={handleLogout} />
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="absolute md:right-[20rem] right-24 lg:bottom-[-4] bottom-6">
             <Link to={"/login"}>
               <Button onClick={handleLinkClick}>Injira</Button>
             </Link>
-          )}
-        </ul>
+          </div>
+        )}
       </div>
     </div>
   );
