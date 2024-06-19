@@ -9,10 +9,11 @@ import { useParams } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdOutlineEdit } from "react-icons/md";
 import { Modal, Popconfirm } from "antd";
+import Loader from "../../SharedComponents/Loader";
 
 const Options = () => {
   const { id } = useParams();
-
+  const [isLoading, setIsLoading] = useState(true);
   const success = (message) => {
     toast.success(message, {
       position: "top-center",
@@ -40,24 +41,29 @@ const Options = () => {
   };
   // ============= fetching options for chosen question =================
   const [questionOption, setQuestionOption] = useState([]);
-
-  const getQuestionOption = async () => {
-    const token = localStorage.getItem("token");
-    const response = await axios.get(
-      `http://localhost:9000/api/v1/options/all/${id}`,
-      {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const data = response.data.data;
-    setQuestionOption(data);
-  };
-
   useEffect(() => {
     getQuestionOption();
-  }, [id]);
+  }, []);
+  const getQuestionOption = async () => {
+    setIsLoading(true); // Set loading to true when fetching data
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios.get(
+        `https://heroes-driving-be.onrender.com/api/v1/options/all/${id}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = response.data.data;
+      setQuestionOption(data);
+      setIsLoading(false); // Set loading to false after data is fetched
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false); // Set loading to false in case of error
+    }
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -75,7 +81,7 @@ const Options = () => {
 
   function getSingleOption(id) {
     axios
-      .get(`http://localhost:9000/api/v1/options/single/${id}`)
+      .get(`https://heroes-driving-be.onrender.com/api/v1/options/single/${id}`)
       .then((res) => setOptionDataEdit(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -88,7 +94,7 @@ const Options = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `http://localhost:9000/api/v1/options/update/${optionDataEdit._id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/options/update/${optionDataEdit._id}`,
         formData,
         {
           headers: {
@@ -129,7 +135,7 @@ const Options = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `http://localhost:9000/api/v1/options/delete/${id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/options/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -153,6 +159,7 @@ const Options = () => {
     <div>
       {/* ===== Display question options===== */}
       <div className=" font-[Poppins] pt-10">
+        {isLoading && <Loader />}
         <section id="services">
           <div className=" font-[Poppins] md:container px-0 py-8">
             <div className=" font-[Poppins] flex gap-5 justify-between flex-wrap group">
@@ -173,8 +180,8 @@ const Options = () => {
                     <h6 className=" font-[Poppins] text-gray-700 text-lg pt-5 text-extrabold ">
                       Date: {formatDate(news.addedAt)}
                     </h6>
-                    <div className=" font-[Poppins] flex">
-                      <div className=" font-[Poppins] flex gap-5 mt-10">
+                    <div className=" font-[Poppins]">
+                      <div className=" font-[Poppins] flex gap-24 lg:-ml-0 md:-ml-24 mt-10">
                         <button
                           className=" font-[Poppins] lg:w-10 md:w-14 cursor-pointer lg:h-10 md:h-14 w-10 h-10 rounded-full flex justify-center items-center py-4 lg:ml-[5rem] md:ml-[18rem] ml-12 bg-[#006991]"
                           title="Update exam"

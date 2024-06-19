@@ -100,7 +100,7 @@ const Register = () => {
       formData.append("password", password);
 
       const response = await axios.post(
-        "http://localhost:9000/api/v1/users/signup",
+        "https://heroes-driving-be.onrender.com/api/v1/users/signup",
         formData,
         {
           headers: {
@@ -159,7 +159,7 @@ const Register = () => {
               Hanga Konte 🙌
             </h2>
             <p className=" font-[Poppins] text-lg flex justify-center text-slate-600 ">
-              Hanga Konte Kuri Heroes Driving School
+              Hanga Konte Kuri Heroes College
             </p>
             <label htmlFor="fullname" className=" font-[Poppins] ">
               <span className={validName ? "valid" : "hidden"}>

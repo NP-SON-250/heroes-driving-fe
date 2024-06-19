@@ -44,7 +44,7 @@ const ConductExam = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:9000/api/v1/exams/single/${id}`)
+    fetch(`https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`)
       .then((response) => response.json())
       .then((data) => setExamData(data.data))
       .catch((error) => console.error("Error fetching exam data:", error));
@@ -120,14 +120,17 @@ const ConductExam = () => {
       responses,
     };
 
-    fetch(`http://localhost:9000/api/v1/newresponses/add/${examData._id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(payload),
-    })
+    fetch(
+      `https://heroes-driving-be.onrender.com/api/v1/newresponses/add/${examData._id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

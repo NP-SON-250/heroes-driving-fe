@@ -66,7 +66,7 @@ const NavBar = () => {
               className="font-[Poppins] lg:h-[70px] h-[90px] md:h-[120px]"
             />
             <p className="font-[Poppins] ml-[-15px] font-bold lg:text-xl md:text-4xl text-2xl lg:block hidden">
-              Heroes driving
+              Heroes College
             </p>
           </div>
         </Link>

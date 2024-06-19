@@ -42,7 +42,7 @@ const Home = () => {
         <div className=" font-[Poppins] flex justify-center pt-4">
           <div>
             <h1 className=" font-[Poppins] text-2xl font-extrabold  capitalize text-[#1D1F30] text-center">
-              Ibyerekeye Heroes Driving
+              Ibyerekeye Heroes College
             </h1>
             <p className=" font-[Poppins] flex justify-center pl-4 ">
               "Ikigo cy’ubwiganze, ubuhanga, n’udushya mu kwagura ubumenyi

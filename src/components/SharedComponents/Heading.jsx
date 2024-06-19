@@ -7,7 +7,7 @@ const Heading = () => {
           Ongera ubumenyi bwawe mu mategeko y’umuhanda na <br />
           <span className=" font-[Poppins] text-[#D2691E]">
             {" "}
-            Heroes Driving
+            Heroes College
           </span>
         </h2>
         <h3 className=" font-[Poppins] lg:text-lg md:text-xl text-lg font-bold lg:pt-5 md:pt-10 pt-2 pb-10  ">

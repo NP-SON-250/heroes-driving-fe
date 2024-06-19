@@ -5,10 +5,10 @@ const Footer = () => {
     <div>
       <footer className=" font-[Poppins] p-3 text-center">
         <h6 className=" font-[Poppins] mb-3 text-2xl text-extrabold">
-          Heroes Driving
+          Heroes College
         </h6>
         <p className=" font-[Poppins] ">
-          Heroes Driving School © All CopyRights Reserved 2024
+          Heroes College © All CopyRights Reserved 2024
         </p>
       </footer>
     </div>

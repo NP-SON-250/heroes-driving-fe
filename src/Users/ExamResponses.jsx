@@ -11,7 +11,7 @@ const ExamResponses = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:9000/api/v1/newresponses/user",
+          "https://heroes-driving-be.onrender.com/api/v1/newresponses/user",
           {
             headers: {
               Authorization: `Bearer ${token}`,

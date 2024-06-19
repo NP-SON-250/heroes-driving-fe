@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { RxDashboard } from "react-icons/rx";
-import { BsFolder2Open, BsPeopleFill, BsGear } from "react-icons/bs";
-import { AiOutlinePayCircle } from "react-icons/ai";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import Logo from "/Logo.png";
 import { NavData } from "../../SharedComponents/Content";
 
@@ -53,7 +49,7 @@ function Sidebars({ openSidebarToggle }) {
               className="font-[Poppins] lg:h-[70px] h-[65px] md:h-[120px]"
             />
             <p className="font-[Poppins] ml-[-18px] lg:text-sm md:text-2xl text-lg text-[#006991]">
-              Heroes driving
+              Heroes College
             </p>
           </div>
         </Link>
@@ -63,10 +59,16 @@ function Sidebars({ openSidebarToggle }) {
           <li
             key={maper.id}
             className={`hover:bg-gray p-2 lg:pl-2 rounded lg:w-full md:w-1/2 ${
-              location.pathname === (maper.link.startsWith("/") ? maper.link : `/${maper.link}`) ? "bg-gray text-white" : ""
+              location.pathname ===
+              (maper.link.startsWith("/") ? maper.link : `/${maper.link}`)
+                ? "bg-gray text-white"
+                : ""
             }`}
           >
-            <Link to={maper.link.startsWith("/") ? maper.link : `/${maper.link}`} onClick={handleLinkClick}>
+            <Link
+              to={maper.link.startsWith("/") ? maper.link : `/${maper.link}`}
+              onClick={handleLinkClick}
+            >
               <div className="font-[Poppins] flex items-center space-x-5">
                 <div className="font-[Poppins] text-3xl md:text-5xl lg:text-3xl">
                   {maper.icon}

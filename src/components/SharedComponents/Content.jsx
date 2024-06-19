@@ -10,8 +10,8 @@ import {
   BsInstagram,
   BsPeopleFill,
   BsFolder2Open,
-  BsGear,
 } from "react-icons/bs";
+import { FaBlog, FaQuestion } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { AiOutlinePayCircle } from "react-icons/ai";
@@ -57,7 +57,7 @@ export const Contents = {
       {
         image: News5,
         para: "Polisi y'urwanda yashyizeho uburyo bushya bwo gukorera perime, soma inkuru yose!!",
-        heading: "Uburyo Wakwiga wifashishije Heroes Driving School",
+        heading: "Uburyo Wakwiga wifashishije Heroes College",
         time: "11-05-2024",
       },
       {
@@ -133,13 +133,13 @@ export const NavData = [
   },
   {
     id: 5,
-    icon: <BsGear />,
+    icon: <FaBlog />,
     text: "Blogs",
     link: "admin/blogs",
   },
   {
     id: 6,
-    icon: <BsGear />,
+    icon: <FaQuestion />,
     text: "Questions",
     link: "admin/questions",
   },
@@ -168,42 +168,41 @@ export const NotificationData = [
   },
 ];
 
-
 export const ExamData = [
   {
     id: 1,
     title: "Test 001",
     time: 30,
     category: "Free",
-    marks:30,
-    questions:20,
-    conductedBy:100,
+    marks: 30,
+    questions: 20,
+    conductedBy: 100,
   },
   {
     id: 2,
     title: "Test 002",
     time: 30,
     category: "Paid",
-    marks:10,
-    questions:10,
-    conductedBy:30,
+    marks: 10,
+    questions: 10,
+    conductedBy: 30,
   },
   {
     id: 3,
     title: "Test 005",
     time: 30,
     category: "Paid",
-    marks:10,
-    questions:14,
-    conductedBy:12,
+    marks: 10,
+    questions: 14,
+    conductedBy: 12,
   },
   {
     id: 4,
     title: "Test 007",
     time: 45,
     category: "Free",
-    marks:25,
-    questions:25,
-    conductedBy:50,
+    marks: 25,
+    questions: 25,
+    conductedBy: 50,
   },
 ];

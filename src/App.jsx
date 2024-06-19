@@ -12,9 +12,10 @@ import Users from "./components/Admin/Users/Users";
 import Reports from "./components/Admin/Reports/Reports";
 import Payments from "./components/Admin/Payments/Payments";
 import Settings from "./components/Admin/Settings/Settings";
-import AdminCategories from "./components/Admin/Categories/AdminCategories";
-import Questions from "./components/Admin/Categories/Questions";
-import Options from "./components/Admin/Categories/Options";
+import Exams from "./components/Admin/Exams/Exams";
+import AdminCategories from "./components/Admin/Exams/AdminCategories";
+import Questions from "./components/Admin/Exams/Questions";
+import Options from "./components/Admin/Exams/Options";
 import ConductExam from "./Users/Conduct";
 import UserFreeExams from "./components/Contents/UserFreeExams";
 import UserPaidExams from "./components/Contents/UserPaidExams";
@@ -57,6 +58,30 @@ const App = () => {
             }
           />
           <Route
+            path="/admins/exams/:id"
+            element={
+              <PrivateRoute>
+                <Exams />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admins/questions/:id"
+            element={
+              <PrivateRoute>
+                <Questions />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admins/options/:id"
+            element={
+              <PrivateRoute>
+                <Options />
+              </PrivateRoute>
+            }
+          />
+          <Route
             path="admin/users"
             element={
               <PrivateRoute>
@@ -85,22 +110,6 @@ const App = () => {
             element={
               <PrivateRoute>
                 <Settings />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admins/questions/:id"
-            element={
-              <PrivateRoute>
-                <Questions />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admins/options/:id"
-            element={
-              <PrivateRoute>
-                <Options />
               </PrivateRoute>
             }
           />
