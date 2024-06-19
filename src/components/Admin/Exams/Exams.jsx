@@ -248,7 +248,7 @@ const Exams = () => {
                     key={id}
                     data-aos="fade-up"
                     data-aos-delay={id * 600}
-                    className=" font-[Poppins] min-w-[20rem] duration-300 border-2 border-slate-200 rounded-xl text-center bg-bg_light_primary p-6 flex-1 group-hover:blur-sm hover:!blur-none"
+                    className=" font-[Poppins] min-w-[18rem] duration-300 border-2 border-slate-200 rounded-xl text-center bg-bg_light_primary p-6 flex-1 group-hover:blur-sm hover:!blur-none"
                   >
                     <p className=" font-[Poppins] text-2xl text-[#006991] w-full">
                       {exams.title}
@@ -259,7 +259,7 @@ const Exams = () => {
                     <h6 className=" font-[Poppins] text-gray-700 text-lg pt-5 text-extrabold ">
                       Time: {exams.time} Mins
                     </h6>
-                    <div className=" font-[Poppins] flex lg:gap-[10.8rem] md:gap-[21rem] gap-12">
+                    <div className=" font-[Poppins] flex lg:gap-[10.8rem] md:gap-[21rem] gap-[1.4rem]">
                       <Link to={`/admins/questions/${exams._id}`}>
                         <h6
                           className=" font-[Poppins] my-3 text-[#006991] lg:text-xs md:text-lg text-medium font-bold "
@@ -274,7 +274,7 @@ const Exams = () => {
                         Done By: 1000
                       </h6>
                     </div>
-                    <div className=" font-[Poppins] flex lg:gap-16 gap-14">
+                    <div className=" font-[Poppins] flex lg:gap-16 gap-4">
                       <div
                         className=" font-[Poppins] flex justify-between items-center cursor-pointer bg-[#006991] p-2 gap-5 rounded-md mt-10 mb-4"
                         onClick={(e) => {
@@ -293,7 +293,7 @@ const Exams = () => {
                       <div className=" font-[Poppins] flex gap-5 mt-10">
                         <button
                           className=" font-[Poppins] lg:w-10 md:w-14 cursor-pointer lg:h-10 md:h-14 w-10 h-10 rounded-full flex justify-center items-center py-4  bg-[#006991]"
-                          title="Update exam"
+                          title="Update category"
                           onClick={(e) => {
                             getSingleExam(exams._id);
                             showExamModal();
@@ -302,7 +302,7 @@ const Exams = () => {
                           <MdOutlineEdit className=" font-[Poppins] text-white lg:text-base md:text-2xl" />
                         </button>
                         <Popconfirm
-                          title="Delete Exam"
+                          title="Delete category"
                           description="Are you sure to delete this exam?"
                           okText="Yes"
                           cancelText="No"

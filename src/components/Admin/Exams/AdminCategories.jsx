@@ -396,7 +396,7 @@ const AdminCategories = () => {
                       key={id}
                       data-aos="fade-up"
                       data-aos-delay={id * 600}
-                      className=" font-[Poppins] min-w-[20rem] duration-300 border-2 border-slate-200 rounded-xl text-center bg-bg_light_primary p-6 flex-1 group-hover:blur-sm hover:!blur-none"
+                      className=" font-[Poppins] min-w-[18rem] duration-300 border-2 border-slate-200 rounded-xl text-center bg-bg_light_primary p-6 flex-1 group-hover:blur-sm hover:!blur-none"
                     >
                       <p className=" font-[Poppins] text-2xl text-[#006991] text-extrabold w-full">
                         Category: {category.type}
@@ -410,7 +410,7 @@ const AdminCategories = () => {
                       <h6 className=" font-[Poppins] text-gray-700 text-lg pt-5 text-extrabold ">
                         amount: {category.amount} Rwf
                       </h6>
-                      <div className=" font-[Poppins] flex lg:gap-[10.8rem] md:gap-[21rem] gap-16">
+                      <div className=" font-[Poppins] flex lg:gap-[10.8rem] md:gap-[21rem] gap-12">
                         <Link to={`/admins/exams/${category._id}`}>
                           <h6
                             className=" font-[Poppins] my-3 text-[#006991] lg:text-xs md:text-lg text-medium font-bold"
@@ -425,7 +425,7 @@ const AdminCategories = () => {
                           Paid users: {category.accessableBy.length}
                         </h6>
                       </div>
-                      <div className=" font-[Poppins] flex justify-center lg:gap-16 md:gap-0 gap-14">
+                      <div className=" font-[Poppins] flex justify-center lg:gap-16 md:gap-0 gap-4">
                         <div
                           className=" font-[Poppins] flex justify-between items-center cursor-pointer bg-[#006991] p-2 gap-4 rounded-md mt-10 mb-4"
                           onClick={(e) => {

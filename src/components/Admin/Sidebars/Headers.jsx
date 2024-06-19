@@ -86,12 +86,12 @@ function Headers({ OpenSidebar, openSidebarToggle }) {
             type="search"
             name="name"
             id="name"
-            className=" font-[Poppins] bg-[#d4d9da] border border-gray text-[#006991] rounded-full h-[50px] md:w-[340px] w-[300px] px-2 md:py-1 outline-none absolute top-12 md:left-0 -left-20"
+            className=" font-[Poppins] bg-[#d4d9da] border border-gray text-[#006991] rounded-full h-[50px] md:w-[340px] w-[300px] px-2 md:py-1 outline-none absolute top-12 md:left-0 -left-24"
             placeholder="Search..."
           />
         )}
       </div>
-      <div className=" font-[Poppins] flex md:space-x-48 space-x-20 relative">
+      <div className=" font-[Poppins] flex md:space-x-48 space-x-12 relative">
         <BsChatText
           className=" font-[Poppins] text-3xl lg:text-2xl md:text-5xl mt-1 cursor-pointer"
           onClick={toggleMessageVisibility}

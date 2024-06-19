@@ -252,7 +252,7 @@ const Questions = () => {
                     key={index}
                     data-aos="fade-up"
                     data-aos-delay={index * 600}
-                    className=" font-[Poppins] min-w-[20rem] duration-300 border-2 border-slate-200 rounded-xl text-center bg-bg_light_primary p-6 flex-1 group-hover:blur-sm hover:!blur-none"
+                    className=" font-[Poppins] min-w-[18rem] duration-300 border-2 border-slate-200 rounded-xl text-center bg-bg_light_primary p-6 flex-1 group-hover:blur-sm hover:!blur-none"
                   >
                     <p className=" font-[Poppins] text-2xl text-[#006991] w-full">
                       {news.question}
@@ -277,7 +277,7 @@ const Questions = () => {
                     </div>
                     <div className=" font-[Poppins] flex">
                       <div
-                        className=" font-[Poppins] flex justify-between items-center cursor-pointer bg-[#006991] p-2 lg:w-44 md:w-48 w-32 rounded-md mt-10 mb-4"
+                        className=" font-[Poppins] flex justify-between items-center cursor-pointer bg-[#006991] p-2 gap-2 rounded-md mt-10 mb-4"
                         onClick={(e) => {
                           getSingleQuestionTo(news._id);
                           showOptionModal();
@@ -294,7 +294,7 @@ const Questions = () => {
                       <div className=" font-[Poppins] flex gap-5 mt-10">
                         <button
                           className=" font-[Poppins] lg:w-10 md:w-14 cursor-pointer lg:h-10 md:h-14 w-10 h-10 rounded-full flex justify-center items-center py-4 lg:ml-[5rem] md:ml-[18rem] ml-12 bg-[#006991]"
-                          title="Update exam"
+                          title="Update question"
                           onClick={(e) => {
                             getSingleQuestion(news._id);
                             showQuestionModal();
@@ -311,7 +311,7 @@ const Questions = () => {
                         >
                           <button
                             className=" font-[Poppins] lg:w-10 md:w-14 cursor-pointer lg:h-10 md:h-14 w-10 h-10 rounded-full flex justify-center items-center py-4 lg:ml-5 md:ml-10 bg-red-600"
-                            title="Delete exam"
+                            title="Delete question"
                           >
                             <RiDeleteBin6Line className=" font-[Poppins] text-white lg:text-base md:text-2xl" />
                           </button>
