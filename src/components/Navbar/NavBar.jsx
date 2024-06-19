@@ -81,7 +81,7 @@ const NavBar = () => {
           )}
         </div>
         <ul
-          className={`lg:flex lg:items-center lg:pb-0 pb-12 absolute lg:static lg:border-0 lg:rounded-none lg:shadow-none border border-gray rounded-md shadow-lg bg-white lg:z-auto z-[-1] right-0 lg:w-auto w-full text-center gap-10 ${
+          className={`lg:flex lg:items-center lg:pb-0 pb-12 absolute lg:static lg:border-0 lg:rounded-none lg:shadow-none border border-gray rounded-md shadow-lg bg-white lg:z-auto z-[-1] right-0 lg:w-auto w-full text-center gap-10 lg:mr-12 ${
             open ? "top-20" : "top-[-490px]"
           }`}
         >
@@ -120,7 +120,7 @@ const NavBar = () => {
             )}
           </div>
         ) : (
-          <div className="absolute md:right-[20rem] right-24 lg:bottom-[-4] bottom-6">
+          <div className="absolute md:right-[20rem] right-24 lg:top-3 lg:right-0 bottom-4">
             <Link to={"/login"}>
               <Button onClick={handleLinkClick}>Injira</Button>
             </Link>
