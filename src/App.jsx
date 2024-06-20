@@ -16,8 +16,8 @@ import AdminCategories from "./components/Admin/Exams/AdminCategories";
 import Questions from "./components/Admin/Exams/Questions";
 import Options from "./components/Admin/Exams/Options";
 import ConductExam from "./Users/Conduct";
-import UserFreeExams from "./components/Contents/UserFreeExams";
-import UserPaidExams from "./components/Contents/UserPaidExams";
+import FreeExams from "./components/FreeCategories/FreeExams";
+import PaidCategories from "./components/PaidCategories/PaidCategories";
 import PrivateRoute from "./components/PrivateRoute ";
 import ExamResponses from "./Users/ExamResponses";
 const App = () => {
@@ -27,8 +27,8 @@ const App = () => {
         {/* Users routes */}
         <Route element={<UserLay />}>
           <Route index element={<Home />} />
-          <Route path="/users/exams" element={<UserFreeExams />} />
-          <Route path="/paidexams" element={<UserPaidExams />} />
+          <Route path="/users/exams/:id" element={<FreeExams />} />
+          <Route path="/categories" element={<PaidCategories />} />
           <Route path="/users/conduct/:id" element={<ConductExam />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/responses" element={<ExamResponses />} />

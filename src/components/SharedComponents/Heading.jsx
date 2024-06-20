@@ -11,7 +11,7 @@ const Heading = () => {
           </span>
         </h2>
         <h3 className=" font-[Poppins] lg:text-lg md:text-xl text-lg font-bold lg:pt-5 md:pt-10 pt-2 pb-10  ">
-          Wemererw gukora imyitozo 3 yambere kubuntu, Nyuma <br />
+          Wemererwa gukora imyitozo 3 yambere kubuntu, Nyuma <br />
           guhabwa uburenganzira bigusaba kugura kode.
         </h3>
       </div>

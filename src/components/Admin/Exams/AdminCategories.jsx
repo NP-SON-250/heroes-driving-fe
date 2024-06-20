@@ -76,7 +76,7 @@ const AdminCategories = () => {
 
     try {
       const response = await axios.post(
-        `https://heroes-driving-be.onrender.com/api/v1/categories/record`,
+        `http://localhost:9000/api/v1/categories/record`,
         formData,
         {
           headers: {
@@ -120,7 +120,7 @@ const AdminCategories = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        "https://heroes-driving-be.onrender.com/api/v1/categories/all",
+        "http://localhost:9000/api/v1/categories/all",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -141,7 +141,7 @@ const AdminCategories = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://heroes-driving-be.onrender.com/api/v1/categories/delete/${id}`,
+        `http://localhost:9000/api/v1/categories/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -168,9 +168,7 @@ const AdminCategories = () => {
 
   function getSingleCategory(id) {
     axios
-      .get(
-        `https://heroes-driving-be.onrender.com/api/v1/categories/single/${id}`
-      )
+      .get(`http://localhost:9000/api/v1/categories/single/${id}`)
       .then((res) => setCategoryDataEdit(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -185,7 +183,7 @@ const AdminCategories = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `https://heroes-driving-be.onrender.com/api/v1/categories/update/${categoryDataEdit._id}`,
+        `http://localhost:9000/api/v1/categories/update/${categoryDataEdit._id}`,
         formData,
         {
           headers: {
@@ -240,9 +238,7 @@ const AdminCategories = () => {
 
   function getSingleCategoryTo(id) {
     axios
-      .get(
-        `https://heroes-driving-be.onrender.com/api/v1/categories/single/${id}`
-      )
+      .get(`http://localhost:9000/api/v1/categories/single/${id}`)
       .then((res) => setCategoryId(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -258,7 +254,7 @@ const AdminCategories = () => {
     } else {
       try {
         const response = await axios.post(
-          `https://heroes-driving-be.onrender.com/api/v1/exams/record/${categoryId._id}`,
+          `http://localhost:9000/api/v1/exams/record/${categoryId._id}`,
           formData,
           {
             headers: {
@@ -473,7 +469,7 @@ const AdminCategories = () => {
                     </div>
                   ))
                 ) : (
-                  <p>No exam data available</p>
+                  <p>No category data available</p>
                 )}
               </div>
             </div>

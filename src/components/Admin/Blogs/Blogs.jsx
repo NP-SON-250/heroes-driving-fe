@@ -75,7 +75,7 @@ const AdminBlogs = () => {
 
     try {
       const response = await axios.post(
-        `https://heroes-driving-be.onrender.com/api/v1/posts`,
+        `http://localhost:9000/api/v1/posts`,
         formData,
         {
           headers: {
@@ -118,14 +118,11 @@ const AdminBlogs = () => {
     setIsLoading(true); // Set loading to true when fetching data
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.get(
-        "https://heroes-driving-be.onrender.com/api/v1/posts",
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:9000/api/v1/posts", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
       const data = response.data.data;
       setFetchedData(data);
       setIsLoading(false); // Set loading to false after data is fetched
@@ -140,7 +137,7 @@ const AdminBlogs = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://heroes-driving-be.onrender.com/api/v1/posts/${id}`,
+        `http://localhost:9000/api/v1/posts/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -171,7 +168,7 @@ const AdminBlogs = () => {
 
   function getSingleBlog(id) {
     axios
-      .get(`https://heroes-driving-be.onrender.com/api/v1/posts/${id}`)
+      .get(`http://localhost:9000/api/v1/posts/${id}`)
       .then((res) => setBlogDataEdit(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -185,7 +182,7 @@ const AdminBlogs = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `https://heroes-driving-be.onrender.com/api/v1/posts/${blogDataEdit._id}`,
+        `http://localhost:9000/api/v1/posts/${blogDataEdit._id}`,
         formData,
         {
           headers: {

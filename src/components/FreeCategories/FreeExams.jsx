@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Hello from "../Hello/Hello";
-const UserFreeExams = () => {
+import Loader from "../SharedComponents/Loader";
+const FreeExams = () => {
+  const { id } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
   const [examData, setExamData] = useState([]);
   const [hasResponded, setHasResponded] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    getExamData();
+  }, []);
   const getExamData = async () => {
+    setIsLoading(true);
     const token = localStorage.getItem("token");
     // Check if token exists
     if (!token) {
@@ -18,7 +26,7 @@ const UserFreeExams = () => {
 
     try {
       const response = await axios.get(
-        "https://heroes-driving-be.onrender.com/api/v1/exams/all/free",
+        `http://localhost:9000/api/v1/exams/all/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -35,15 +43,13 @@ const UserFreeExams = () => {
       } else if (response.status === 200) {
         const data = response.data.data;
         setExamData(data);
+        setIsLoading(false);
       }
     } catch (error) {
       console.error("Error fetching exam data:", error);
+      setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    getExamData();
-  }, []);
 
   const getSingleExamTo = async (id) => {
     const token = localStorage.getItem("token");
@@ -52,7 +58,7 @@ const UserFreeExams = () => {
         navigate("/login");
       } else {
         const response = await axios.get(
-          `https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`,
+          `http://localhost:9000/api/v1/exams/single/${id}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -69,6 +75,7 @@ const UserFreeExams = () => {
   return (
     <div className="font-[Poppins]">
       <Hello />
+      {isLoading && <Loader />}
       <div className="font-[Poppins] pt-10">
         <section id="services">
           <div className="font-[Poppins] md:container px-0 py-8 flex justify-center">
@@ -138,4 +145,4 @@ const UserFreeExams = () => {
   );
 };
 
-export default UserFreeExams;
+export default FreeExams;

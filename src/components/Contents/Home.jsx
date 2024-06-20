@@ -3,7 +3,7 @@ import { Contents } from "../SharedComponents/Content";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import Button from "../Buttons/Button";
-import UserFreeExams from "./UserFreeExams";
+import FreeCategories from "../FreeCategories/FreeCategories";
 const Home = () => {
   const { services } = Contents;
   const { News } = Contents;
@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <>
       <div>
-        <UserFreeExams />
+        <FreeCategories />
         <div className=" font-[Poppins] flex justify-center pt-4">
           <div>
             <h1 className=" font-[Poppins] text-2xl font-extrabold  capitalize text-[#1D1F30] text-center">

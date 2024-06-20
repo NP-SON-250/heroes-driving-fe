@@ -214,24 +214,23 @@ const Users = () => {
     setIsLoading(true); // Set loading to true when fetching data
     try {
       const response = await axios.get(
-        "https://heroes-driving-be.onrender.com/api/v1/users/all"
+        "http://localhost:9000/api/v1/users/all"
       );
       const data = response.data.data;
       setData(data);
       setIsLoading(false); // Set loading to false after data is fetched
-      
     } catch (error) {
       console.error("Error fetching data:", error);
       setIsLoading(false); // Set loading to false in case of error
     }
   };
-  
+
   // ================== delete user =====================
   async function handleDelete(id) {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://heroes-driving-be.onrender.com/api/v1/users/delete/${id}`,
+        `http://localhost:9000/api/v1/users/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -252,7 +251,7 @@ const Users = () => {
   function getSingleUser(id) {
     const token = localStorage.getItem("token");
     axios
-      .get(`https://heroes-driving-be.onrender.com/api/v1/users/single/${id}`, {
+      .get(`http://localhost:9000/api/v1/users/single/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -271,7 +270,7 @@ const Users = () => {
     const token = localStorage.getItem("token");
     axios
       .put(
-        `https://heroes-driving-be.onrender.com/api/v1/users/update/${dataEdit._id}`,
+        `http://localhost:9000/api/v1/users/update/${dataEdit._id}`,
         formData
       )
       .then((res) => {
@@ -296,7 +295,7 @@ const Users = () => {
   return (
     <div>
       <div className="">
-      {isLoading && <Loader />}
+        {isLoading && <Loader />}
         <Table
           className="overflow-x-scroll w-full"
           columns={columns}

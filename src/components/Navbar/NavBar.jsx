@@ -9,7 +9,8 @@ import Profiles from "../Admin/Sidebars/Profiles";
 
 const Links = [
   { name: "ahabanza", link: "/", title: "Home" },
-  { name: "ibizamini", link: "/paidexams" },
+  { name: "ibyiciro", link: "/categories" },
+  { name: "Imyitozo", link: "/tests" },
   { name: "amakuru", link: "/blogs" },
   { name: "sobanuza", link: "/questions" },
 ];

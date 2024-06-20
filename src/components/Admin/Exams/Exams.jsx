@@ -51,7 +51,7 @@ const Exams = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        `https://heroes-driving-be.onrender.com/api/v1/exams/all/${id}`,
+        `http://localhost:9000/api/v1/exams/all/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const Exams = () => {
 
   function getSingleExam(id) {
     axios
-      .get(`https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`)
+      .get(`http://localhost:9000/api/v1/exams/single/${id}`)
       .then((res) => setExamDataEdit(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -94,7 +94,7 @@ const Exams = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `https://heroes-driving-be.onrender.com/api/v1/exams/update/${examDataEdit._id}`,
+        `http://localhost:9000/api/v1/exams/update/${examDataEdit._id}`,
         formData,
         {
           headers: {
@@ -135,7 +135,7 @@ const Exams = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://heroes-driving-be.onrender.com/api/v1/exams/delete/${id}`,
+        `http://localhost:9000/api/v1/exams/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -173,7 +173,7 @@ const Exams = () => {
 
   function getSingleExamTo(id) {
     axios
-      .get(`https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`)
+      .get(`http://localhost:9000/api/v1/exams/single/${id}`)
       .then((res) => setExamId(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -189,7 +189,7 @@ const Exams = () => {
     } else {
       try {
         const response = await axios.post(
-          `https://heroes-driving-be.onrender.com/api/v1/questions/record/${examId._id}`,
+          `http://localhost:9000/api/v1/questions/record/${examId._id}`,
           formData,
           {
             headers: {

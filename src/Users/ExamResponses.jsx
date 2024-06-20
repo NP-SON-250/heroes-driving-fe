@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import Loader from "../components/SharedComponents/Loader";
 const ExamResponses = () => {
   const [exam, setExam] = useState();
   const [visibleResponses, setVisibleResponses] = useState({});
@@ -11,7 +11,7 @@ const ExamResponses = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://heroes-driving-be.onrender.com/api/v1/newresponses/user",
+          "http://localhost:9000/api/v1/newresponses/user",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -34,7 +34,7 @@ const ExamResponses = () => {
   };
 
   if (!exam) {
-    return <div>Loading...</div>;
+    return <div><Loader/></div>;
   }
 
   if (exam.data.length === 0) {
