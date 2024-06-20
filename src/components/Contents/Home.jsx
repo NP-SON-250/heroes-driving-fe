@@ -4,7 +4,6 @@ import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import Button from "../Buttons/Button";
 import UserFreeExams from "./UserFreeExams";
-import Hello from "../Hello/Hello";
 const Home = () => {
   const { services } = Contents;
   const { News } = Contents;
@@ -64,7 +63,7 @@ const Home = () => {
                   data-aos="fade-up"
                   data-aos-delay={i * 600}
                   className=" font-[Poppins] min-w-[14rem] duration-300 cursor-pointer border-2 border-slate-200 rounded-xl text-center bg-bg_light_primary p-6 flex-1 group-hover:blur-sm 
-              hover:!blur-none"
+                  hover:!blur-none"
                 >
                   <div className=" font-[Poppins] bg-[#006991] w-10 h-10 lg:ml-[6rem] ml-[7rem] flex justify-center items-center rounded-full py-4">
                     <p className=" font-[Poppins] text-white items-center text-lg font-extrabold">
@@ -106,8 +105,8 @@ const Home = () => {
                   data-aos="fade-up"
                   data-aos-delay={i * 600}
                   className=" font-[Poppins] min-w-[14rem] duration-300 cursor-pointer border-2 border-slate-200 rounded-xl text-center bg-bg_light_primary p-6 flex-1 group-hover:blur-sm 
-              hover:!blur-none"
-                >
+                  hover:!blur-none"
+                  >
                   <div className=" font-[Poppins] w-full h-[30vh] flex justify-center items-center rounded-full py-4">
                     <img
                       src={news.image}

@@ -109,7 +109,7 @@ const AdminCategories = () => {
     }
   };
 
-  // ============= fetching exams =================
+  // ============= fetching Category =================
   const [categoriesData, setCategoriesData] = useState([]);
   useEffect(() => {
     getCategoriesData();
@@ -136,7 +136,7 @@ const AdminCategories = () => {
     }
   };
 
-  // ================== delete exam =====================
+  // ================== delete Category =====================
   async function handleDeleteCategory(id) {
     try {
       const token = localStorage.getItem("token");
@@ -156,7 +156,7 @@ const AdminCategories = () => {
     }
   }
 
-  // ============ Edit Exam =========
+  // ============ Edit Category =========
 
   const [categoryDataEdit, setCategoryDataEdit] = useState({
     examsNumber: "",
@@ -185,7 +185,7 @@ const AdminCategories = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `https://heroes-driving-be.onrender.com/api/v1/categories/update/${examDataEdit._id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/categories/update/${categoryDataEdit._id}`,
         formData,
         {
           headers: {

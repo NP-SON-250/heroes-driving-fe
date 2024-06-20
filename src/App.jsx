@@ -9,9 +9,8 @@ import Login from "./components/Contents/Login";
 import Register from "./components/Contents/Register";
 import Dashboards from "./components/Admin/Dashboards";
 import Users from "./components/Admin/Users/Users";
-import Reports from "./components/Admin/Reports/Reports";
 import Payments from "./components/Admin/Payments/Payments";
-import Settings from "./components/Admin/Settings/Settings";
+import AdminBlogs from "./components/Admin/Blogs/Blogs";
 import Exams from "./components/Admin/Exams/Exams";
 import AdminCategories from "./components/Admin/Exams/AdminCategories";
 import Questions from "./components/Admin/Exams/Questions";
@@ -98,18 +97,10 @@ const App = () => {
             }
           />
           <Route
-            path="admin/reports"
-            element={
-              <PrivateRoute>
-                <Reports />
-              </PrivateRoute>
-            }
-          />
-          <Route
             path="admin/blogs"
             element={
               <PrivateRoute>
-                <Settings />
+                <AdminBlogs />
               </PrivateRoute>
             }
           />

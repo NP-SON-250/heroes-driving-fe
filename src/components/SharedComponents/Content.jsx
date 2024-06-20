@@ -140,14 +140,8 @@ export const NavData = [
   {
     id: 6,
     icon: <FaQuestion />,
-    text: "Questions",
+    text: "FAQs",
     link: "admin/questions",
-  },
-  {
-    id: 7,
-    icon: <TbBrandGoogleAnalytics />,
-    text: "Reports",
-    link: "admin/reports",
   },
 ];
 

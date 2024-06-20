@@ -3,15 +3,15 @@ import { FaUserTie } from "react-icons/fa6";
 import { SearchOutlined } from "@ant-design/icons";
 import React, { useRef, useState, useEffect } from "react";
 import Highlighter from "react-highlight-words";
-import { Button, Input, Space, Table, message } from "antd";
+import { Button, Input, Space, Table } from "antd";
 import { MdDelete } from "react-icons/md";
 import { FcEditImage } from "react-icons/fc";
-
 import { Modal, Popconfirm } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import Footer from "../../Footer/Footer";
+import Loader from "../../SharedComponents/Loader";
 const Users = () => {
-  const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const success = (message) => {
     toast.success(message, {
       position: "top-center",
@@ -207,17 +207,25 @@ const Users = () => {
 
   // ============= fetching users =================
   const [data, setData] = useState([]);
-
-  const getData = async () => {
-    const response = await axios.get(
-      "https://heroes-driving-be.onrender.com/api/v1/users/all"
-    );
-    const data = response.data.data;
-    setData(data);
-  };
   useEffect(() => {
     getData();
   }, []);
+  const getData = async () => {
+    setIsLoading(true); // Set loading to true when fetching data
+    try {
+      const response = await axios.get(
+        "https://heroes-driving-be.onrender.com/api/v1/users/all"
+      );
+      const data = response.data.data;
+      setData(data);
+      setIsLoading(false); // Set loading to false after data is fetched
+      
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false); // Set loading to false in case of error
+    }
+  };
+  
   // ================== delete user =====================
   async function handleDelete(id) {
     try {
@@ -288,6 +296,7 @@ const Users = () => {
   return (
     <div>
       <div className="">
+      {isLoading && <Loader />}
         <Table
           className="overflow-x-scroll w-full"
           columns={columns}
