@@ -271,7 +271,7 @@ const Exams = () => {
                         </h6>
                       </Link>
                       <h6 className=" font-[Poppins] my-3 text-[#006991] lg:text-xs md:text-lg text-medium font-bold ">
-                        Done By: 1000
+                        Done By: {exams.conductedBy.length}
                       </h6>
                     </div>
                     <div className=" font-[Poppins] flex lg:gap-16 gap-4">

@@ -4,7 +4,6 @@ import UserLay from "./components/Loyouts/UserLay";
 import LoginRegisterLayt from "./components/Loyouts/LoginRegisterLayt";
 import Layouts from "./components/Admin/Layouts";
 import Home from "./components/Contents/Home";
-import Blogs from "./components/Contents/Blogs";
 import Login from "./components/Contents/Login";
 import Register from "./components/Contents/Register";
 import Dashboards from "./components/Admin/Dashboards";
@@ -16,7 +15,6 @@ import AdminCategories from "./components/Admin/Exams/AdminCategories";
 import Questions from "./components/Admin/Exams/Questions";
 import Options from "./components/Admin/Exams/Options";
 import ConductExam from "./Users/Conduct";
-import FreeExams from "./components/FreeCategories/FreeExams";
 import PaidCategories from "./components/PaidCategories/PaidCategories";
 import PrivateRoute from "./components/PrivateRoute ";
 import ExamResponses from "./Users/ExamResponses";
@@ -27,11 +25,9 @@ const App = () => {
         {/* Users routes */}
         <Route element={<UserLay />}>
           <Route index element={<Home />} />
-          <Route path="/users/exams/:id" element={<FreeExams />} />
           <Route path="/categories" element={<PaidCategories />} />
           <Route path="/users/conduct/:id" element={<ConductExam />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/responses" element={<ExamResponses />} />
+          <Route path="/test/results" element={<ExamResponses />} />
         </Route>
         {/* Login register routes */}
         <Route element={<LoginRegisterLayt />}>

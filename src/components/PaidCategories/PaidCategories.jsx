@@ -11,6 +11,7 @@ import Hello from "../Hello/Hello";
 const PaidCategories = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [categoriesData, setCategoriesData] = useState([]);
+  const [selectedCategoryAmount, setSelectedCategoryAmount] = useState(null);
 
   const success = (message) => {
     toast.success(message, {
@@ -47,9 +48,8 @@ const PaidCategories = () => {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      // Handle scenario where token is not present (user is logged out)
       setIsLoading(false);
-      setCategoriesData([]); // Clear any existing data
+      setCategoriesData([]);
       return;
     }
 
@@ -71,34 +71,37 @@ const PaidCategories = () => {
     }
   };
 
-  {
-    /*============ Recording payment for selected category =======*/
-  }
   const [payment, setPayment] = useState({
     phone: "",
     names: "",
   });
+
   const handleInputPayment = (event) => {
     if (event.target.name === "profile") {
-      setExam({ ...payment, profile: event.target.files[0] });
+      setPayment({ ...payment, profile: event.target.files[0] });
     } else {
-      setExam({ ...payment, [event.target.name]: event.target.value });
+      setPayment({ ...payment, [event.target.name]: event.target.value });
     }
   };
-  const [categoryId, setCategoryId] = useState([]);
+
+  const [categoryId, setCategoryId] = useState(null);
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   function getSingleCategoryTo(id) {
     axios
       .get(`http://localhost:9000/api/v1/categories/single/${id}`)
-      .then((res) => setCategoryId(res.data.data))
+      .then((res) => {
+        setCategoryId(res.data.data);
+        setSelectedCategoryAmount(res.data.data.amount); // Update the selected category amount
+      })
       .catch((err) => console.log(err));
   }
-  const handleSubmitExa = async (event) => {
+
+  const handleSubmitPay = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("phone", exam.phone);
-    formData.append("names", exam.names);
+    formData.append("phone", payment.phone);
+    formData.append("names", payment.names);
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -140,19 +143,23 @@ const PaidCategories = () => {
       }
     }
   };
+
   const showPaymentModal = () => {
     setIsPaymentModalOpen(true);
   };
+
   const handlePaymentOk = (event) => {
     event.preventDefault();
-    handleSubmitExa(event);
+    handleSubmitPay(event);
   };
+
   const handlePaymentCancel = () => {
     setIsPaymentModalOpen(false);
   };
+
   return (
     <>
-      <div className="font-[Poppins] pt-10">
+      <div className="font-[Poppins] pt-0">
         <Hello />
         {isLoading && <Loader />}
         <section id="services">
@@ -169,19 +176,19 @@ const PaidCategories = () => {
                     key={id}
                     data-aos="fade-up"
                     data-aos-delay={id * 600}
-                    className=" font-[Poppins] min-w-[14rem] duration-300 border-2 cursor-pointer border-slate-200 rounded-md text-center bg-bg_light_primary p-6 group-hover:blur-sm hover:!blur-none"
+                    className="font-[Poppins] min-w-[14rem] duration-300 border-2 cursor-pointer border-slate-200 rounded-md text-center bg-bg_light_primary p-6 group-hover:blur-sm hover:!blur-none"
                     onClick={(e) => {
                       getSingleCategoryTo(category._id);
                       showPaymentModal();
                     }}
                   >
-                    <p className=" font-[Poppins] text-base font-extrabold pt-2">
+                    <p className="font-[Poppins] text-base font-extrabold pt-2">
                       Ibizamini {category.examsNumber}
                     </p>
-                    <p className=" font-[Poppins] text-base pt-2 ">
+                    <p className="font-[Poppins] text-base pt-2">
                       {category.amount} Rwf
                     </p>
-                    <p className=" font-[Poppins] text-base pt-2 ">
+                    <p className="font-[Poppins] text-base pt-2">
                       Iminsi {category.duration}
                     </p>
                   </div>
@@ -193,7 +200,6 @@ const PaidCategories = () => {
           </div>
         </section>
 
-        {/* ======Add payment for selected category======= */}
         <div>
           <Modal
             style={{
@@ -204,18 +210,29 @@ const PaidCategories = () => {
             onCancel={handlePaymentCancel}
           >
             <div
-              className=" font-[Poppins] absolute lg:top-[12px] lg:right-[12px] md:right-1 md:top-1 top-3 right-3 md:w-12 lg:w-8 lg:h-8 md:h-12 w-8 h-8 bg-[#006991] rounded-full flex justify-center items-center cursor-pointer"
+              className="font-[Poppins] absolute lg:top-[12px] lg:right-[12px] md:right-1 md:top-1 top-3 right-3 md:w-12 lg:w-8 lg:h-8 md:h-12 w-8 h-8 bg-[#006991] rounded-full flex justify-center items-center cursor-pointer"
               onClick={handlePaymentCancel}
             >
-              <AiOutlineClose className=" font-[Poppins] lg:text-base md:text-xl text-xl text-black" />
+              <AiOutlineClose className="font-[Poppins] lg:text-base md:text-xl text-xl text-black" />
             </div>
-            <div className=" font-[Poppins]">
-              <form action="#" onSubmit={handleSubmitExa}>
-                <div className=" font-[Poppins] flex flex-col lg:justify-center items-center">
+            <div className="font-[Poppins]">
+              <form action="#" onSubmit={handleSubmitPay}>
+                <div className="font-[Poppins] flex flex-col lg:justify-center items-center">
                   <Title TitleValue="Kwishyura 🙌" />
+                  <div className="flex justify-center items-center">
+                    <div className="mt-10 md:max-w-[29rem] max-w-[18rem] border-slate-200 rounded-md text-center border-2 bg-bg_light_primary p-4 group-hover:blur-sm hover:!blur-none">
+                      <h6 className="flex flex-col justify-center items-center gap-4 text-base font-[Poppins]">
+                        Uburyo wishyura, Kanda:{" "}
+                        <span className="md:text-xl text-sm font-extrabold font-[Poppins]">
+                          * 182 * 8 * 1 * 637915 * {selectedCategoryAmount} *
+                          PIN #
+                        </span>
+                      </h6>
+                    </div>
+                  </div>
                   <SubTitle SubTitleValue="Menyekanisha ubwishyu bwawe" />
                 </div>
-                <div className=" font-[Poppins] ">
+                <div className="font-[Poppins]">
                   <div>
                     <Labels Label="Telefoni" />
                     <input
@@ -223,10 +240,7 @@ const PaidCategories = () => {
                       id="phone"
                       name="phone"
                       placeholder="Nimero ya telefoni wakoresheje wishyura"
-                      className=" font-[Poppins] text-[#006991] w-full lg:text-base
-                      md:text-3xl border border-slate-600 
-                      lg:p-2 md:p-4 p-2 mt-1 rounded-md 
-                      "
+                      className="font-[Poppins] text-[#006991] w-full lg:text-base md:text-3xl border border-slate-600 lg:p-2 md:p-4 p-2 mt-1 rounded-md"
                       onChange={handleInputPayment}
                     />
                   </div>
@@ -235,13 +249,10 @@ const PaidCategories = () => {
                     <Labels Label="Amazina" />
                     <input
                       type="text"
-                      id="amazina"
-                      name="amazina"
+                      id="names"
+                      name="names"
                       placeholder="Amazina ibaruyeho"
-                      className=" font-[Poppins] text-[#006991] w-full lg:text-base
-                      md:text-3xl border border-slate-600 
-                      lg:p-2 md:p-4 p-2 mt-1 rounded-md 
-                      "
+                      className="font-[Poppins] text-[#006991] w-full lg:text-base md:text-3xl border border-slate-600 lg:p-2 md:p-4 p-2 mt-1 rounded-md"
                       onChange={handleInputPayment}
                     />
                   </div>

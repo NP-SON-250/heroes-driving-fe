@@ -8,7 +8,7 @@ const Hello = () => {
       <div className='bg-[url("assets/space.webp")] bg-center bg-cover'>
         <Heading />
         <div className=" font-[Poppins] flex col-1 justify-center pb-6">
-          <Link to={"/getcode"}>
+          <Link to={"/categories"}>
             <Button>Gura kode</Button>
           </Link>
         </div>
