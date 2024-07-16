@@ -50,7 +50,7 @@ const Questions = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        `http://localhost:9000/api/v1/questions/all/${id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/questions/all/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -81,7 +81,9 @@ const Questions = () => {
 
   function getSingleQuestion(id) {
     axios
-      .get(`http://localhost:9000/api/v1/questions/single/${id}`)
+      .get(
+        `https://heroes-driving-be.onrender.com/api/v1/questions/single/${id}`
+      )
       .then((res) => setQuestionDataEdit(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -93,7 +95,7 @@ const Questions = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `http://localhost:9000/api/v1/questions/update/${questionDataEdit._id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/questions/update/${questionDataEdit._id}`,
         formData,
         {
           headers: {
@@ -134,7 +136,7 @@ const Questions = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `http://localhost:9000/api/v1/questions/delete/${id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/questions/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -173,7 +175,9 @@ const Questions = () => {
 
   function getSingleQuestionTo(id) {
     axios
-      .get(`http://localhost:9000/api/v1/questions/single/${id}`)
+      .get(
+        `https://heroes-driving-be.onrender.com/api/v1/questions/single/${id}`
+      )
       .then((res) => setQuestionId(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -189,7 +193,7 @@ const Questions = () => {
     } else {
       try {
         const response = await axios.post(
-          `http://localhost:9000/api/v1/options/record/${questionId._id}`,
+          `https://heroes-driving-be.onrender.com/api/v1/options/record/${questionId._id}`,
           formData,
           {
             headers: {

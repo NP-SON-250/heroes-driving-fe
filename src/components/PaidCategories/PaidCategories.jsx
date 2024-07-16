@@ -55,7 +55,7 @@ const PaidCategories = () => {
 
     try {
       const response = await axios.get(
-        "http://localhost:9000/api/v1/categories/all/paid",
+        "https://heroes-driving-be.onrender.com/api/v1/categories/all/paid",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -89,7 +89,9 @@ const PaidCategories = () => {
 
   function getSingleCategoryTo(id) {
     axios
-      .get(`http://localhost:9000/api/v1/categories/single/${id}`)
+      .get(
+        `https://heroes-driving-be.onrender.com/api/v1/categories/single/${id}`
+      )
       .then((res) => {
         setCategoryId(res.data.data);
         setSelectedCategoryAmount(res.data.data.amount); // Update the selected category amount
@@ -109,7 +111,7 @@ const PaidCategories = () => {
     } else {
       try {
         const response = await axios.post(
-          `http://localhost:9000/api/v1/payments/${categoryId._id}`,
+          `https://heroes-driving-be.onrender.com/api/v1/payments/${categoryId._id}`,
           formData,
           {
             headers: {

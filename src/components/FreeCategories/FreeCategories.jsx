@@ -55,7 +55,7 @@ const FreeCategories = () => {
 
     try {
       const response = await axios.get(
-        "http://localhost:9000/api/v1/exams/freeExams",
+        "https://heroes-driving-be.onrender.com/api/v1/exams/freeExams",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -88,11 +88,14 @@ const FreeCategories = () => {
     }
 
     try {
-      await axios.get(`http://localhost:9000/api/v1/exams/single/${id}`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.get(
+        `https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
       navigate(`/users/conduct/${id}`);
     } catch (error) {
       console.error("Error fetching single exam data:", error);
@@ -103,7 +106,7 @@ const FreeCategories = () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:9000/api/v1/payments/all/${code}`
+        `https://heroes-driving-be.onrender.com/api/v1/payments/all/${code}`
       );
       if (response.status === 200) {
         const exams = response.data.data.flatMap((payment) =>
@@ -310,7 +313,8 @@ const FreeCategories = () => {
                             Muminota: {exam.time}
                           </h6>
                           <h6 className="font-[Poppins] my-1 text-[#006991] lg:text-xs md:text-lg text-medium font-bold ">
-                            Ibibazo: {exam.questions ? exam.questions.length : 0}
+                            Ibibazo:{" "}
+                            {exam.questions ? exam.questions.length : 0}
                           </h6>
                           <div className="font-[Poppins] flex gap-5 cursor-pointer">
                             <h6
@@ -320,7 +324,10 @@ const FreeCategories = () => {
                                   : "cursor-pointer"
                               }`}
                               onClick={() => {
-                                if (exam.questions && exam.questions.length > 0) {
+                                if (
+                                  exam.questions &&
+                                  exam.questions.length > 0
+                                ) {
                                   getSingleExamTo(exam._id);
                                 }
                               }}

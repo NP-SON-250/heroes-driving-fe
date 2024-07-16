@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import News1 from "../../assets/News1.jpg";
 import News5 from "../../assets/News5.png";
@@ -13,9 +13,11 @@ import {
 } from "react-icons/bs";
 import { FaBlog, FaQuestion } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import axios from "axios";
 import { AiOutlinePayCircle } from "react-icons/ai";
 export const Contents = {
+
+  
   services: {
     service_content: [
       {
@@ -141,7 +143,7 @@ export const NavData = [
     id: 6,
     icon: <FaQuestion />,
     text: "FAQs",
-    link: "admin/questions",
+    link: "admins/FAQs",
   },
 ];
 

@@ -47,7 +47,7 @@ const ConductExam = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:9000/api/v1/exams/single/${id}`)
+    fetch(`https://heroes-driving-be.onrender.com/api/v1/exams/single/${id}`)
       .then((response) => response.json())
       .then((data) => setExamData(data.data))
       .catch((error) => console.error("Error fetching exam data:", error));
@@ -125,7 +125,7 @@ const ConductExam = () => {
     };
 
     fetch(
-      `http://localhost:9000/api/v1/newresponses/add/${examData._id}`,
+      `https://heroes-driving-be.onrender.com/api/v1/newresponses/add/${examData._id}`,
       {
         method: "POST",
         headers: {
@@ -143,7 +143,7 @@ const ConductExam = () => {
           localStorage.removeItem("selectedOptions");
           localStorage.removeItem("timeRemaining");
           setSelectedOption(null);
-          navigate("/responses");
+          navigate("/");
         } else {
           console.error("Submission failed:", data);
           errors(data.message || "Submission failed");

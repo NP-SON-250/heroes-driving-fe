@@ -100,7 +100,7 @@ const Register = () => {
       formData.append("password", password);
 
       const response = await axios.post(
-        "http://localhost:9000/api/v1/users/signup",
+        "https://heroes-driving-be.onrender.com/api/v1/users/signup",
         formData,
         {
           headers: {

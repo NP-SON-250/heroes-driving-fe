@@ -18,6 +18,8 @@ import ConductExam from "./Users/Conduct";
 import PaidCategories from "./components/PaidCategories/PaidCategories";
 import PrivateRoute from "./components/PrivateRoute ";
 import ExamResponses from "./Users/ExamResponses";
+import Notifications from "./components/Admin/Notifications/Notifications";
+import FAQs from "./components/Admin/FAQs/FAQs";
 const App = () => {
   return (
     <>
@@ -97,6 +99,22 @@ const App = () => {
             element={
               <PrivateRoute>
                 <AdminBlogs />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admins/nitifications"
+            element={
+              <PrivateRoute>
+                <Notifications />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admins/FAQs"
+            element={
+              <PrivateRoute>
+                <FAQs />
               </PrivateRoute>
             }
           />

@@ -1,55 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import {
-  BsPersonCircle,
-  BsSearch,
-  BsJustify,
-  BsChatText,
-} from "react-icons/bs";
+import { BsPersonCircle, BsJustify, BsChatText } from "react-icons/bs";
 import Profiles from "./Profiles";
-import Notifications from "./Notifications";
-
+import axios from "axios";
+import { Link } from "react-router-dom";
 function Headers({ OpenSidebar, openSidebarToggle }) {
-  const [searchVisible, setSearchVisible] = useState(false);
   const [profileVisible, setProfileVisible] = useState(false);
-  const [messageVisible, setMessageVisible] = useState(false);
-  const searchInputRef = useRef(null);
   const profileRef = useRef(null);
-  const messageRef = useRef(null);
-
-  const toggleSearchVisibility = (event) => {
-    event.stopPropagation();
-    setSearchVisible((prev) => !prev);
-    setProfileVisible(false);
-    setMessageVisible(false);
-  };
 
   const toggleProfileVisibility = (event) => {
     event.stopPropagation();
     setProfileVisible((prev) => !prev);
-    setSearchVisible(false);
-    setMessageVisible(false);
-  };
-
-  const toggleMessageVisibility = (event) => {
-    event.stopPropagation();
-    setMessageVisible((prev) => !prev);
-    setSearchVisible(false);
-    setProfileVisible(false);
   };
 
   const handleClickOutside = (event) => {
-    if (
-      searchInputRef.current &&
-      !searchInputRef.current.contains(event.target)
-    ) {
-      setSearchVisible(false);
-    }
     if (profileRef.current && !profileRef.current.contains(event.target)) {
       setProfileVisible(false);
-    }
-    if (messageRef.current && !messageRef.current.contains(event.target)) {
-      setMessageVisible(false);
     }
   };
 
@@ -60,8 +26,33 @@ function Headers({ OpenSidebar, openSidebarToggle }) {
     };
   }, []);
 
+  // ============= Fetch notifications =================
+  const [notifyData, setNotifyData] = useState([]);
+
+  useEffect(() => {
+    getNotifyData();
+  }, []);
+
+  const getNotifyData = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios.get(
+        "https://heroes-driving-be.onrender.com/api/v1/notifications/notify",
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = response.data.data;
+      setNotifyData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   return (
-    <header className=" font-[Poppins] fixed top-0 right-0 lg:left-[18.8rem] md:left-0 left-0 flex items-center justify-between px-8 h-16 shadow-2xl bg-gray-900 text-[#006991] z-30 bg-white">
+    <header className=" font-[Poppins] fixed top-0 right-0 lg:left-[18.8rem] md:left-0 left-0 flex items-center lg:justify-end justify-between px-8 h-16 shadow-2xl bg-gray-900 text-[#006991] z-30 bg-white">
       <div className=" font-[Poppins] lg:hidden">
         {openSidebarToggle ? (
           <AiOutlineClose
@@ -75,35 +66,19 @@ function Headers({ OpenSidebar, openSidebarToggle }) {
           />
         )}
       </div>
-      <div className=" font-[Poppins] relative">
-        <BsSearch
-          className=" font-[Poppins] text-3xl lg:text-2xl md:text-5xl cursor-pointer"
-          onClick={toggleSearchVisibility}
-        />
-        {searchVisible && (
-          <input
-            ref={searchInputRef}
-            type="search"
-            name="name"
-            id="name"
-            className=" font-[Poppins] bg-[#d4d9da] border border-gray text-[#006991] rounded-full h-[50px] md:w-[340px] w-[300px] px-2 md:py-1 outline-none absolute top-12 md:left-0 -left-24"
-            placeholder="Search..."
-          />
-        )}
-      </div>
       <div className=" font-[Poppins] flex md:space-x-48 space-x-12 relative">
-        <BsChatText
-          className=" font-[Poppins] text-3xl lg:text-2xl md:text-5xl mt-1 cursor-pointer"
-          onClick={toggleMessageVisibility}
-        />
-        {messageVisible && (
-          <div
-            ref={messageRef}
-            className=" font-[Poppins] absolute top-12 -right-6"
-          >
-            <Notifications />
-          </div>
-        )}
+        <div className="flex cursor-pointer">
+          <Link to={"/admins/nitifications"}>
+            <BsChatText className=" font-[Poppins] text-3xl lg:text-2xl md:text-5xl lg:mt-1 md:mt-0 mt-1" />
+            {notifyData.length > 0 && (
+              <div className=" bg-[#006991] rounded-full lg:w-4 lg:h-4 md:w-7 md:h-7  w-5 h-5 flex justify-center items-center p-1 absolute lg:left-3 left-5 top-0">
+                <p className="text-white lg:text-xs md:text-xl text-base">
+                  {notifyData.length}
+                </p>
+              </div>
+            )}
+          </Link>
+        </div>
         <div className=" font-[Poppins] relative">
           <BsPersonCircle
             className=" font-[Poppins] text-3xl lg:text-4xl md:text-5xl cursor-pointer"
@@ -112,7 +87,7 @@ function Headers({ OpenSidebar, openSidebarToggle }) {
           {profileVisible && (
             <div
               ref={profileRef}
-              className=" font-[Poppins] absolute top-12 right-0"
+              className=" font-[Poppins] absolute lg:top-12 md:top-14 top-12 right-0"
             >
               <Profiles />
             </div>

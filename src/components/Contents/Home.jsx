@@ -44,7 +44,9 @@ const Home = () => {
   const getBlogsData = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get("http://localhost:9000/api/v1/posts");
+      const response = await axios.get(
+        "https://heroes-driving-be.onrender.com/api/v1/posts"
+      );
       const data = response.data.data;
       setFetchedData(data);
       setIsLoading(false);

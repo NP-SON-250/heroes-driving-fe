@@ -76,7 +76,7 @@ const AdminCategories = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:9000/api/v1/categories/record`,
+        `https://heroes-driving-be.onrender.com/api/v1/categories/record`,
         formData,
         {
           headers: {
@@ -120,7 +120,7 @@ const AdminCategories = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        "http://localhost:9000/api/v1/categories/all",
+        "https://heroes-driving-be.onrender.com/api/v1/categories/all",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -141,7 +141,7 @@ const AdminCategories = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `http://localhost:9000/api/v1/categories/delete/${id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/categories/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -168,7 +168,9 @@ const AdminCategories = () => {
 
   function getSingleCategory(id) {
     axios
-      .get(`http://localhost:9000/api/v1/categories/single/${id}`)
+      .get(
+        `https://heroes-driving-be.onrender.com/api/v1/categories/single/${id}`
+      )
       .then((res) => setCategoryDataEdit(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -183,7 +185,7 @@ const AdminCategories = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `http://localhost:9000/api/v1/categories/update/${categoryDataEdit._id}`,
+        `https://heroes-driving-be.onrender.com/api/v1/categories/update/${categoryDataEdit._id}`,
         formData,
         {
           headers: {
@@ -238,7 +240,9 @@ const AdminCategories = () => {
 
   function getSingleCategoryTo(id) {
     axios
-      .get(`http://localhost:9000/api/v1/categories/single/${id}`)
+      .get(
+        `https://heroes-driving-be.onrender.com/api/v1/categories/single/${id}`
+      )
       .then((res) => setCategoryId(res.data.data))
       .catch((err) => console.log(err));
   }
@@ -254,7 +258,7 @@ const AdminCategories = () => {
     } else {
       try {
         const response = await axios.post(
-          `http://localhost:9000/api/v1/exams/record/${categoryId._id}`,
+          `https://heroes-driving-be.onrender.com/api/v1/exams/record/${categoryId._id}`,
           formData,
           {
             headers: {
@@ -385,7 +389,7 @@ const AdminCategories = () => {
           {isLoading && <Loader />}
           <section id="services">
             <div className=" font-[Poppins] md:container px-0 py-8">
-              <div className=" font-[Poppins] flex gap-5 justify-between flex-wrap group">
+              <div className=" font-[Poppins] grid lg:grid-cols-2 grid-cols-1 gap-4 group">
                 {categoriesData.length > 0 ? (
                   categoriesData.map((category, id) => (
                     <div
@@ -437,7 +441,7 @@ const AdminCategories = () => {
                           </button>
                           <GoPlus className=" font-[Poppins] bg-white text-[#006991] rounded-full lg:text-xl md:text-3xl" />
                         </div>
-                        <div className=" font-[Poppins] flex gap-5 mt-10">
+                        <div className=" font-[Poppins] flex gap-5 mt-10 mr-6">
                           <button
                             className=" font-[Poppins] lg:w-10 md:w-14 cursor-pointer lg:h-10 md:h-14 w-10 h-10 rounded-full flex justify-center items-center py-4 lg:ml-[1rem] md:ml-[18rem] ml-12 bg-[#006991]"
                             title="Update category"
