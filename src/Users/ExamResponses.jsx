@@ -86,17 +86,12 @@ const ExamResponses = () => {
 
   if (!exam) {
     return (
-      <div>
+      <div className="lg:py-14 md:py-52 py-20">
         <Loader />
       </div>
     );
   }
 
-  if (exam.data.length === 0) {
-    return (
-      <div className="text-center text-xl">Ntabwo ibisubizo biraboneka.</div>
-    );
-  }
 
   const Mexam = exam.data[currentIndex];
 
